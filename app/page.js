@@ -11,17 +11,15 @@ async function getData() {
 export default async function Home() {
   const list = await getData();
 
-  console.log(list);
-
   return (
-    <div className="w-full h-full min-h-screen bg-slate-800 pb-14">
+    <div className="w-full h-full min-h-screen bg-slate-800 pb-14 px-3.5 lg:px-0">
       <Container>
         <div className="py-2.5">
           <div
             id="start"
-            className="w-full flex justify-center bg-slate-900 py-3.5"
+            className="w-full flex justify-center bg-slate-900 py-5 rounded"
           >
-            <h1 className="text-gray-100 text-5xl">
+            <h1 className="text-gray-100 text-center text-5xl leading-tight">
               بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
             </h1>
           </div>
@@ -37,14 +35,16 @@ export default async function Home() {
         <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-3">
           {list?.data?.map((item, index) => {
             return (
-              <Card key={index}>
-                <Paragraph className="font-semibold">
+              <Card key={index} className="space-y-1.5">
+                <Paragraph className="font-medium">
                   {index + 1}. {item?.namaLatin} - {item?.arti}
                 </Paragraph>
                 <div className="flex justify-center items-end flex-col">
                   <Paragraph className="!text-4xl">{item?.nama}</Paragraph>
-                  <Paragraph>Di turunkan di {item?.tempatTurun}</Paragraph>
                 </div>
+                <Paragraph>
+                  {item?.jumlahAyat} ayat - {item?.tempatTurun}
+                </Paragraph>
               </Card>
             );
           })}
