@@ -1,9 +1,20 @@
 import Container from "@/components/container";
 import Card from "@/components/box/Card";
+import Paragraph from "@/components/typography/Paragraph";
 
-export default function Home() {
+async function getData() {
+  const res = await fetch("https://equran.id/api/v2/surat");
+  if (!res.ok) throw new Error("Failed to fetch data");
+  return res.json();
+}
+
+export default async function Home() {
+  const list = await getData();
+
+  console.log(list);
+
   return (
-    <div className="w-full h-full min-h-screen bg-slate-800">
+    <div className="w-full h-full min-h-screen bg-slate-800 pb-14">
       <Container>
         <div className="py-2.5">
           <div
@@ -23,10 +34,20 @@ export default function Home() {
           </div>
         </div>
         <br />
-        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          <Card>1</Card>
-          <Card>1</Card>
-          <Card>1</Card>
+        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-3">
+          {list?.data?.map((item, index) => {
+            return (
+              <Card key={index}>
+                <Paragraph className="font-semibold">
+                  {index + 1}. {item?.namaLatin} - {item?.arti}
+                </Paragraph>
+                <div className="flex justify-center items-end flex-col">
+                  <Paragraph className="!text-4xl">{item?.nama}</Paragraph>
+                  <Paragraph>Di turunkan di {item?.tempatTurun}</Paragraph>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </Container>
     </div>
