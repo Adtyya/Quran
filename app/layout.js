@@ -1,6 +1,7 @@
 import { Inter, Quicksand } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
+import Footer from "@/components/footer";
 
 const inter = Quicksand({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         <main>
           <Navbar></Navbar>
           {children}
+          <Footer></Footer>
         </main>
       </body>
     </html>

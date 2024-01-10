@@ -1,3 +1,7 @@
-export default function Paragraph({ children }) {
-  return <p className="text-base text-gray-100 font-medium">{children}</p>;
+export default function Paragraph({ children, className }) {
+  return (
+    <p className={`text-base text-gray-100 font-medium ${className}`}>
+      {children}
+    </p>
+  );
 }

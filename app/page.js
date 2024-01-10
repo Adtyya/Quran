@@ -3,7 +3,7 @@ import Card from "@/components/box/Card";
 
 export default function Home() {
   return (
-    <div className="w-full h-full bg-slate-800">
+    <div className="w-full h-full min-h-screen bg-slate-800">
       <Container>
         <div className="py-2.5">
           <div
