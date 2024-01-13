@@ -24,14 +24,12 @@ export default function Footer() {
     };
   }, []);
 
-  console.log(scroll);
-
   return (
     <>
       <button
         className={`fixed ${
           scroll ? "bottom-16" : "bottom-0"
-        }  text-white text-lg flex items-center justify-center right-16 bg-slate-900 rounded-full h-10 w-10 duration-200`}
+        }  text-white text-lg flex items-center justify-center right-5 lg:right-16 bg-slate-900 rounded-full h-10 w-10 duration-200`}
         onClick={() => window.scrollTo(0, 0)}
       >
         <FiChevronUp />

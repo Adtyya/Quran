@@ -1,6 +1,7 @@
 import Container from "@/components/container";
 import Card from "@/components/box/Card";
 import Paragraph from "@/components/typography/Paragraph";
+import Link from "next/link";
 
 async function getData() {
   const res = await fetch("https://equran.id/api/v2/surat");
@@ -35,17 +36,19 @@ export default async function Home() {
         <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-3">
           {list?.data?.map((item, index) => {
             return (
-              <Card key={index} className="space-y-1.5">
-                <Paragraph className="font-medium">
-                  {index + 1}. {item?.namaLatin} - {item?.arti}
-                </Paragraph>
-                <div className="flex justify-center items-end flex-col">
-                  <Paragraph className="!text-4xl">{item?.nama}</Paragraph>
-                </div>
-                <Paragraph>
-                  {item?.jumlahAyat} ayat - {item?.tempatTurun}
-                </Paragraph>
-              </Card>
+              <Link key={index} href={`/baca/${index + 1}`}>
+                <Card className="space-y-1.5">
+                  <Paragraph className="font-medium">
+                    {index + 1}. {item?.namaLatin} - {item?.arti}
+                  </Paragraph>
+                  <div className="flex justify-center items-end flex-col">
+                    <Paragraph className="!text-4xl">{item?.nama}</Paragraph>
+                  </div>
+                  <Paragraph>
+                    {item?.jumlahAyat} ayat - {item?.tempatTurun}
+                  </Paragraph>
+                </Card>
+              </Link>
             );
           })}
         </div>

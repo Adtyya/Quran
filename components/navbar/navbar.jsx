@@ -20,7 +20,7 @@ export default function Navbar() {
           </div>
           <button
             id="hamburger"
-            className="space-y-2 border border-transparent focus:border-white p-3 lg:hidden"
+            className="space-y-2 border border-transparent focus:border-white rounded p-3 lg:hidden"
             onClick={() => setOpen(!open)}
           >
             {Array.from([1, 2]).map((_, i) => {
